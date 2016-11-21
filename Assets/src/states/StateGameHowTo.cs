@@ -5,17 +5,17 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.src.states
 {
-	public class StateLearn : IState
+	public class StateGameHowTo : IState
 	{
 		private StateManager stateManager;
 
-		public StateLearn (StateManager sm)
+		public StateGameHowTo (StateManager sm)
 		{
 			this.stateManager = sm;
-			if(SceneManager.GetActiveScene().name != "scene1"){
-				SceneManager.LoadScene ("scene1", LoadSceneMode.Single);
+			if(SceneManager.GetActiveScene().name != "scene2"){
+				SceneManager.LoadScene ("scene2", LoadSceneMode.Single);
 			}
-			Debug.Log ("Learn state");
+			Debug.Log ("Game How to state");
 		}
 
 		public void StateUpdate(){
@@ -24,7 +24,7 @@ namespace Assets.src.states
 
 		public void OnGUI(){
 			if(GUI.Button(new Rect(10,10,120,30),"Skip")){
-				stateManager.Switch (new StateGameHowTo(stateManager));
+				stateManager.Switch (new StateGame(stateManager));
 			}
 		}
 	}
