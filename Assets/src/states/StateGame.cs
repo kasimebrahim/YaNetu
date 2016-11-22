@@ -29,6 +29,7 @@ namespace Assets.src.states
 			if(GUI.Button(new Rect(10,45,120,30),"Lose")){
 				stateManager.Switch (new StateLost(stateManager));
 			}
+			Debug.Log (stateManager.gameData.test);
 		}
 	}
 }

@@ -19,7 +19,7 @@ namespace Assets.src.states
 		}
 
 		public void StateUpdate(){
-			
+			Debug.Log (stateManager.gameData.test);
 		}
 
 		public void OnGUI(){
