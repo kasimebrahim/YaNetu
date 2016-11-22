@@ -2,11 +2,14 @@
 using System.Collections;
 using Assets.src.states.interfaces;
 using Assets.src.states;
+using UnityEngine.SceneManagement;
 
 public class StateManager : MonoBehaviour {
 
 	private static StateManager instance;
 	private IState activeState;
+
+	public int test = 0;
 	// Use this for initialization
 	void Start () {
 		activeState = new StateIntroduction (this);
@@ -38,5 +41,11 @@ public class StateManager : MonoBehaviour {
 
 	public void Switch(IState newState){
 		activeState = newState;
+		test++;
+	}
+
+	public void Restart(){
+		Destroy (gameObject);
+		SceneManager.LoadScene ("scene0", LoadSceneMode.Single);
 	}
 }
