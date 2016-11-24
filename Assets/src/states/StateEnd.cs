@@ -23,13 +23,6 @@ namespace Assets.src.states
 		}
 
 		public void OnGUI(){
-			if(GUI.Button(new Rect(10,10,120,30),"Quit")){
-				Application.Quit ();
-			}
-
-			if(GUI.Button(new Rect(10,45,120,30),"Restart")){
-				this.stateManager.Restart ();
-			}
 		}
 	}
 }

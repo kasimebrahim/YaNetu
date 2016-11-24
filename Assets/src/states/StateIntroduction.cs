@@ -19,13 +19,10 @@ namespace Assets.src.states
 		}
 
 		public void StateUpdate(){
-			Debug.Log (stateManager.gameData.test);
+//			Debug.Log (stateManager.gameData.test);
 		}
 
 		public void OnGUI(){
-			if(GUI.Button(new Rect(10,10,120,30),"Skip")){
-				stateManager.Switch (new StateLearn(stateManager));
-			}
 		}
 	}
 }
