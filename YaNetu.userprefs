@@ -8,7 +8,7 @@
       <File FileName="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" Line="1" Column="1" />
-      <File FileName="Assets\playerBehavior.cs" Line="23" Column="65" />
+      <File FileName="Assets\playerBehavior.cs" Line="35" Column="1" />
       <File FileName="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
