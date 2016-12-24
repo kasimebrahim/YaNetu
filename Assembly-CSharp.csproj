@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\src\scripts\GameData.cs" />
+     <Compile Include="Assets\src\scripts\PluginScript.cs" />
      <Compile Include="Assets\src\scripts\StateManager.cs" />
      <Compile Include="Assets\src\states\StateEnd.cs" />
      <Compile Include="Assets\src\states\StateGame.cs" />
@@ -54,6 +55,7 @@
      <Compile Include="Assets\src\states\StateLearn.cs" />
      <Compile Include="Assets\src\states\StateLost.cs" />
      <Compile Include="Assets\src\states\interfaces\IState.cs" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
