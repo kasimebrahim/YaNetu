@@ -23,13 +23,7 @@ public class playerBehavior : MonoBehaviour {
 	private int State = 0;
 
 
-/*
- state 0 = the player will walk form the coridor to the door and stops there
- state 1 = the door will open
- State 2 = go to the Box 
-  
- * 
- * */
+
 
 
 
@@ -46,6 +40,7 @@ public class playerBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		print (">>>>>>>>>>state" + State);
 		if (State == 0) {
 			movePlayer (door, 25, 0);
@@ -59,6 +54,14 @@ public class playerBehavior : MonoBehaviour {
 			speak ();
 		}
 
+
+/*
+ state 0 = the player will walk form the coridor to the door and stops there
+ state 1 = the door will open
+ State 2 = go to the Box 
+ State 3 = yanetu will tell talk to the kid
+ State 4 = player will have the option of saying the number 
+ */
 			
 		}
 
@@ -101,6 +104,6 @@ public class playerBehavior : MonoBehaviour {
 
 
 	void speak(){
-		print ("blah blah blah blah");
+		print ("Hello student this is the box conataining number one would you want to sayits name");
 	}
 }
