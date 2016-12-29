@@ -1,0 +1,4 @@
+Welcome to the Game.
+This game is a puzzle game. the puzzles are about numbers that we have learned on our prvious class.
+The game is very interesting i hope you will love it.
+You are going to ride a train as you can see inside the train there is a horn sound button. different numbers will show up on the train's truck. so if you wanna pass the number you have to analyze the symbol and the meaning of the number first. and based on the meaning you have to press this button. forexample if the number shows up is two, then you have to press the button two times. otherwise the train will stop and you will lose the game.
