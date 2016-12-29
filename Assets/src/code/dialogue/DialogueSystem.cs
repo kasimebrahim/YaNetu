@@ -24,9 +24,9 @@ namespace Assets.src.dialogue
         {
             try
             {
-                introductionScripts = System.IO.File.ReadAllLines("Assets/src/dialogue/Data/introductionScripts.txt");
-                learningScripts = System.IO.File.ReadAllLines("Assets/src/dialogue/Data/learnScripts.txt");
-                testingScripts = System.IO.File.ReadAllLines("Assets/src/dialogue/Data/testScripts.txt");
+                introductionScripts = System.IO.File.ReadAllLines("Assets/Data/introductionScripts.txt");
+                learningScripts = System.IO.File.ReadAllLines("Assets/Data/learnScripts.txt");
+                testingScripts = System.IO.File.ReadAllLines("Assets/Data/testScripts.txt");
             }
             catch (Exception ex) { Console.WriteLine(ex.StackTrace); }
         }
