@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace Assets.src.dialogue
 {
-    class DialogueSystem
+    public class DialogueSystem
     {
         private string[] introductionScripts = null;
         private string[] learningScripts = null;

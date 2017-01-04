@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityStandardAssets.Characters.ThirdPerson;
-
+using Assets.src.dialogue;
 
 public class playerBehavior : MonoBehaviour {
 
-
+	private DialogueSystem dialogueSys;
+	private ArrayList scripts;
 	public int max= 150;
 	public int speed = 7;
 	float i = 0;
@@ -18,6 +19,8 @@ public class playerBehavior : MonoBehaviour {
 	private bool completed;
 	private bool openTheDoor = false;
 
+	public GameObject gameControl;
+	PluginScript ps ;
 
 
 	private int State = 0;
@@ -33,7 +36,11 @@ public class playerBehavior : MonoBehaviour {
 		thirdPersonScript = gameObject.GetComponent<ThirdPersonCharacter>();
 		//Link Objects
 		playerTransform = gameObject.GetComponent<Transform> ();
+		gameControl = GameObject.FindGameObjectWithTag("gamecont");
+		ps = gameControl.GetComponent<PluginScript> ();
 
+		dialogueSys = new DialogueSystem ();
+		scripts=dialogueSys.getLearningScripts();
 
 
 	}
@@ -51,6 +58,8 @@ public class playerBehavior : MonoBehaviour {
 		} else if (State == 2) {
 			movePlayer (Box, 10, 1);
 		} else if (State == 3) {
+			speak ();
+		} else if (State == 4) {
 			speak ();
 		}
 
@@ -104,6 +113,9 @@ public class playerBehavior : MonoBehaviour {
 
 
 	void speak(){
-		print ("Hello student this is the box conataining number one would you want to sayits name");
+		string text = scripts [1].ToString ();
+		print (text);
+		ps.Speek (text);
+		State = 4;
 	}
 }
