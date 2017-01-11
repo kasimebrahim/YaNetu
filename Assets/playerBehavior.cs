@@ -6,76 +6,88 @@ using Assets.src.dialogue;
 public class playerBehavior : MonoBehaviour {
 
 	private DialogueSystem dialogueSys;
-	private ArrayList scripts;
-	public int max= 150;
-	public int speed = 7;
-	float i = 0;
-	public GameObject door;
-	public GameObject Box;
-	private bool walk = true;
-	private bool startedTeaching = false;
 	private ThirdPersonCharacter thirdPersonScript;
-	private Transform playerTransform;
-	private bool completed;
-	private bool openTheDoor = false;
-
-	public GameObject gameControl;
 	PluginScript ps ;
 
-
+	public int max= 150;
+	public int speed = 7;
 	private int State = 0;
 
 
+	private ArrayList scripts;
+
+	float i = 0;
+	public GameObject door;
+	public GameObject Box;
+	public GameObject gameControl;
+
+	private Transform playerTransform;
+	private bool completed;
+	private bool openTheDoor = false;
+	private bool walk = true;
+	private bool startedTeaching = false;
+	private bool talk = true;
 
 
 
 
 	// Use this for initialization
 	void Start () {
+		
 		//Link Scripts
 		thirdPersonScript = gameObject.GetComponent<ThirdPersonCharacter>();
+
 		//Link Objects
 		playerTransform = gameObject.GetComponent<Transform> ();
+
+		// integrate the STT/TTS module
 		gameControl = GameObject.FindGameObjectWithTag("gamecont");
 		ps = gameControl.GetComponent<PluginScript> ();
 
+		// interate the Dialogue System
 		dialogueSys = new DialogueSystem ();
-		scripts=dialogueSys.getLearningScripts();
-
-
+			
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		/*
+The Main Game logic works in simple State Machine Approch
+	 state 0 = the player will walk form the coridor to the door and stops there
+	 state 1 = the door will open
+	 State 2 = go to the Box 
+	 State 3 = yanetu will tell talk to the kid
+	 State 4 = player will have the option of saying the number 
+ 		*/
 		print (">>>>>>>>>>state" + State);
-		if (State == 0) {
+		if (State == 0) 
+		{
 			movePlayer (door, 25, 0);
-
-		} else if (State == 1) {
+		}
+		else if (State == 1) 
+		{
 			openDoor (door);
-
-		} else if (State == 2) {
+		}
+		else if (State == 2) 
+		{
 			movePlayer (Box, 10, 1);
-		} else if (State == 3) {
-			speak ();
-		} else if (State == 4) {
+		} 
+		else if (State == 3) 
+		{
 			speak ();
 		}
-
-
-/*
- state 0 = the player will walk form the coridor to the door and stops there
- state 1 = the door will open
- State 2 = go to the Box 
- State 3 = yanetu will tell talk to the kid
- State 4 = player will have the option of saying the number 
- */
+		else if (State == 4) 
+		{
 			
 		}
 
 
+
+	}
+
+
 	// postion 0 for foreward 1 for backward
+	// this method moves the player given the game object 
 	void movePlayer (GameObject gameobject,float distance,int postion)
 	{
 		Vector3 finalPos;
@@ -86,10 +98,9 @@ public class playerBehavior : MonoBehaviour {
 		}
 		completed = false;
 		float journyLeangth = Vector3.Distance (playerTransform.position, finalPos	);
-
 		if (journyLeangth > distance) {
 			thirdPersonScript.Move (Vector3.Lerp (playerTransform.position, finalPos, 10f), false, false);
-
+			// looging
 			Debug.Log (gameobject.transform.position + "->" + playerTransform.position);
 			Debug.Log (">>>>" + journyLeangth);
 		} else if (State == 0) {
@@ -98,24 +109,24 @@ public class playerBehavior : MonoBehaviour {
 		} else {
 			State = 3;
 		}
-
 		Debug.Log ("Done");
 
 	}
 
+	// this method opens the door
 	void openDoor(GameObject gameObject){
 		gameObject.transform.Translate (Vector3.forward * Time.deltaTime * 10f);
 		if (gameObject.transform.position.x > 6) {
 			State = 2;
 		}
-
 	}
 
 
 	void speak(){
-		string text = scripts [1].ToString ();
-		print (text);
-		ps.Speek (text);
-		State = 4;
+		if(talk){
+			ps.Speek ("Welcome to the class In this class we are going to learn about numbers. Numbers are Zero 1 2 3 4 5 6 7 8 9 ");
+			talk = false;
+
+		}
 	}
 }

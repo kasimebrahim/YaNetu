@@ -48,6 +48,7 @@
      <Compile Include="Assets\playerBehavior.cs" />
      <Compile Include="Assets\scriptButtonNextScene.cs" />
      <Compile Include="Assets\scripts\BoxMover.cs" />
+     <Compile Include="Assets\scripts\BreakButton.cs" />
      <Compile Include="Assets\scripts\SmoothCamera.cs" />
      <Compile Include="Assets\src\code\dialogue\DialogueSystem.cs" />
      <Compile Include="Assets\src\scripts\GameData.cs" />
