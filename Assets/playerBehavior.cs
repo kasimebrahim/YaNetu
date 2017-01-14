@@ -124,7 +124,12 @@ The Main Game logic works in simple State Machine Approch
 
 	void speak(){
 		if(talk){
-			ps.Speek ("Welcome to the class In this class we are going to learn about numbers. Numbers are Zero 1 2 3 4 5 6 7 8 9 ");
+			ps.Speek ("Welcome to the class. In this class we are going to learn about numbers." +
+				" Numbers are  a word or symbol (such as “five” or “16”) that represents a specific amount or quantity." +
+				" : a number or a set of numbers and other symbols that is used to identify a person or thing." +
+				"Now let us see each numbers individually.\nThe symbol displayed on the box is the first number." +
+				"This number is called one.\nThis number represents a quantity of one real world object." +
+				"Forexample, one bird, one lion, one orangeor one banana.\nTo see what is inside the box. Say One out loud. ");
 			talk = false;
 
 		}
