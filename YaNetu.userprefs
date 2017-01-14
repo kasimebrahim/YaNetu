@@ -1,8 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\src\scripts\IntroductionScript.cs">
     <Files>
-      <File FileName="Assets\src\scripts\IntroductionScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\src\scripts\IntroductionScript.cs" Line="17" Column="15" />
+      <File FileName="Assets\src\code\dialogue\DialogueSystem.cs" Line="31" Column="46" />
+      <File FileName="Assets\src\scripts\DialogueSys.cs" Line="5" Column="5" />
+      <File FileName="Assets\src\scripts\GameData.cs" Line="1" Column="1" />
+      <File FileName="Assets\src\scripts\PluginScript.cs" Line="39" Column="11" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

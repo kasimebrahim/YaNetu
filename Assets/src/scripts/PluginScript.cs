@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System;
 public class PluginScript : MonoBehaviour {
 	private string inText;
 	private string lastText;
@@ -20,11 +20,17 @@ public class PluginScript : MonoBehaviour {
 
 	/*record*/
 	public void record(){
-		using(AndroidJavaClass activityClass = new AndroidJavaClass("com.example.mylibrary.MainActivity")){
-			using(AndroidJavaObject activity = activityClass.GetStatic<AndroidJavaObject>("myContext")){
-				activity.Call ("getSpeech");
+		try{
+			using(AndroidJavaClass activityClass = new AndroidJavaClass("com.example.mylibrary.MainActivity")){
+				using(AndroidJavaObject activity = activityClass.GetStatic<AndroidJavaObject>("myContext")){
+					activity.Call ("getSpeech");
+				}
 			}
+			
+		}catch(Exception ex){
+			this.ToastMessage (ex.Message);	
 		}
+
 	}
 
 	/*Toast a message*/
