@@ -60,8 +60,8 @@
      <Compile Include="Assets\src\states\interfaces\IState.cs" />
      <None Include="Assets\Resources\introductionScripts.txt" />
      <None Include="Assets\Resources\testScripts.txt" />
-     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
      <None Include="Assets\Resources\learnScripts.txt" />
+     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

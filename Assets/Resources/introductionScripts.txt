@@ -2,9 +2,8 @@
  (i am/my name is/Hello/are you ther?)
  Sorry,i did not catch your name. Would you please tell me your name again?
  It is Nice to meet you!.
- How old are you?
+  How old are you?
  (i am/years old/oow)
  Pardone me
- Well, It is good to know you
- today we are going to learn simple math and you are going to play a puzzle game. I hope you will love the game.
+ Well, It is good to know you. Today we are going to learn simple math and you are going to play a puzzle game. I hope you will love the game.
  Let us go to the class.

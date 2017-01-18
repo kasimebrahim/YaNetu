@@ -21,20 +21,34 @@ public class IntroductionScript : MonoBehaviour {
 	void Start () {
 		plugin = gameControl.GetComponent<PluginScript> ();
 		dialogueSys = gameControl.GetComponent<DialogueSys> ();
-		dialogueSystem = dialogueSys.dialogue;
+		dialogueSystem = dialogueSys.getDialogueSystem();
 		introductionScripts = dialogueSystem.getIntroductionScripts();
 	}
 
     void Update () {
 		if (currentSate == States.SPEAK) {
-			playYanetu ();
+			//playYanetu ();
 		}
 	}
 	void playYanetu(){
 		plugin.Speek (introductionScripts[0].ToString());
 		plugin.record ();
 		string name = plugin.GetInText ();
-		plugin.ToastMessage (name);
+		while(name.Equals (" ")) {
+			plugin.Speek (introductionScripts [1].ToString());
+			plugin.record ();
+			name = plugin.GetInText ();
+		} 
+		plugin.Speek (introductionScripts[2].ToString() + dialogueSystem.getName(name));
+		plugin.Speek (introductionScripts[3].ToString());
+		string age = plugin.GetInText ();
+		while(age.Equals (" ")) {
+			plugin.Speek (introductionScripts [4].ToString());
+			plugin.record ();
+			age = plugin.GetInText ();
+		} 
+		plugin.Speek (introductionScripts[5].ToString() + dialogueSystem.getName(name));
+		//plugin.ToastMessage (name);
 		currentSate = States.STOP;
 	}
 }
