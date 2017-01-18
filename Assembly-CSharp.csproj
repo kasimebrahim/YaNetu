@@ -38,14 +38,15 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>C:/Program Files/Unity/Unity5.42f/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>C:/Program Files/Unity/Unity5.42f/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\src\dialogue\DialogueSystem.cs" />
+     <Compile Include="Assets\src\code\dialogue\DialogueSystem.cs" />
+     <Compile Include="Assets\src\scripts\DialogueSys.cs" />
      <Compile Include="Assets\src\scripts\GameData.cs" />
      <Compile Include="Assets\src\scripts\StateManager.cs" />
      <Compile Include="Assets\src\states\StateEnd.cs" />
@@ -55,14 +56,14 @@
      <Compile Include="Assets\src\states\StateLearn.cs" />
      <Compile Include="Assets\src\states\StateLost.cs" />
      <Compile Include="Assets\src\states\interfaces\IState.cs" />
-     <None Include="Assets\src\dialogue\Data\testScripts.txt" />
-     <None Include="Assets\src\dialogue\Data\learnScripts.txt" />
-     <None Include="Assets\src\dialogue\Data\introductionScripts.txt" />
+     <None Include="Assets\Resources\introductionScripts.txt" />
+     <None Include="Assets\Resources\testScripts.txt" />
+     <None Include="Assets\Resources\learnScripts.txt" />
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Program Files/Unity/Unity5.42f/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>C:/Program Files/Unity/Unity5.42f/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

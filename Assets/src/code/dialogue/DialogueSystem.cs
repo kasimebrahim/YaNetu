@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace Assets.src.dialogue
+namespace Assets.src.code.dialogue
 {
-    class DialogueSystem
+    public class DialogueSystem
     {
         private string[] introductionScripts = null;
         private string[] learningScripts = null;
         private string[] testingScripts = null;
-
+		public string error = "";
         public DialogueSystem()
         {
-            loadScripts();
+            
         }
 
         /*
@@ -22,13 +22,23 @@ namespace Assets.src.dialogue
          */
         public void loadScripts()
         {
+			StringBuilder reader = null;
             try
-            {
-                introductionScripts = System.IO.File.ReadAllLines("Assets/src/dialogue/Data/introductionScripts.txt");
-                learningScripts = System.IO.File.ReadAllLines("Assets/src/dialogue/Data/learnScripts.txt");
-                testingScripts = System.IO.File.ReadAllLines("Assets/src/dialogue/Data/testScripts.txt");
+			{
+				
+				UnityEngine.TextAsset introduction = (UnityEngine.TextAsset)UnityEngine.Resources.Load("introductionScripts", typeof(UnityEngine.TextAsset));
+				UnityEngine.TextAsset learn = (UnityEngine.TextAsset)UnityEngine.Resources.Load("learnScripts", typeof(UnityEngine.TextAsset));
+				UnityEngine.TextAsset test = (UnityEngine.TextAsset)UnityEngine.Resources.Load("testScripts", typeof(UnityEngine.TextAsset));
+			    reader = new StringBuilder(introduction.text);
+				introductionScripts = reader.ToString().Split('\n');
+				reader = new StringBuilder(learn.text);
+				learningScripts = reader.ToString().Split('\n');
+				reader = new StringBuilder(test.text);
+				testingScripts = reader.ToString().Split('\n');
+						
             }
-            catch (Exception ex) { Console.WriteLine(ex.StackTrace); }
+			catch (Exception ex) { error = ex.Message;
+			}
         }
 
         /*
@@ -36,6 +46,7 @@ namespace Assets.src.dialogue
          */
         public ArrayList getIntroductionScripts()
         {
+			loadScripts();
             return sanitizeScripts(introductionScripts);
             
         }
