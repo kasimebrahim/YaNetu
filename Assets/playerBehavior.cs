@@ -20,6 +20,7 @@ public class playerBehavior : MonoBehaviour {
 	public GameObject door;
 	public GameObject Box;
 	public GameObject gameControl;
+	public GameObject ButtonObj;
 
 	private Transform playerTransform;
 	private bool completed;
@@ -27,7 +28,7 @@ public class playerBehavior : MonoBehaviour {
 	private bool walk = true;
 	private bool startedTeaching = false;
 	private bool talk = true;
-
+	private bool talk2 = true;
 
 
 
@@ -78,7 +79,10 @@ The Main Game logic works in simple State Machine Approch
 		}
 		else if (State == 4) 
 		{
-			
+			showButton ();
+		}else if (State == 5) 
+		{
+			speak2 ();
 		}
 
 
@@ -131,7 +135,23 @@ The Main Game logic works in simple State Machine Approch
 				"This number is called one.\nThis number represents a quantity of one real world object." +
 				"Forexample, one bird, one lion, one orangeor one banana.\nTo see what is inside the box. Say One out loud. ");
 			talk = false;
+			State = 4;
 
+
+		}
+	}
+
+	void showButton(){
+		ButtonObj.SetActive(true);
+		if (Box == null) {
+			State = 5;
+		}
+	}
+
+	void speak2(){
+		if (talk2) {
+			ps.Speek ("well Done.");
+			talk2 = false;
 		}
 	}
 }
