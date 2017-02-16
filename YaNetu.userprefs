@@ -7,14 +7,13 @@
       <File FileName="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonCharacter.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\CrossPlatformInput\Scripts\TouchPad.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\CrossPlatformInput\Scripts\Joystick.cs" Line="1" Column="1" />
-      <File FileName="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" Line="30" Column="1" />
       <File FileName="Assets\src\code\dialogue\DialogueSystem.cs" Line="1" Column="1" />
       <File FileName="Assets\Standard Assets\Characters\ThirdPersonCharacter\Scripts\ThirdPersonUserControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\playerBehavior.cs" Line="142" Column="29" />
-      <File FileName="Assets\Data\learnScripts.txt" Line="1" Column="1" />
+      <File FileName="Assets\playerBehavior.cs" Line="15" Column="2" />
+      <File FileName="Assets\Data\learnScripts.txt" Line="12" Column="1" />
       <File FileName="Assets\scriptButtonNextScene.cs" Line="1" Column="1" />
-      <File FileName="Assets\scripts\BreakButton.cs" Line="8" Column="4" />
-      <File FileName="Assets\scripts\Health.cs" Line="14" Column="36" />
+      <File FileName="Assets\scripts\BreakButton.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

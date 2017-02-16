@@ -8,7 +8,7 @@ This number represents a quantity of one real world object.
 Forexample, one bird, one lion, one orangeor one banana.
 To see what is inside the box. Say One out loud.
 You are wrong. please try again. say One out loud.
-Oow! you have got One Bird. As you can see the number one represents One bird. good let us see the next number. 
+ you have got One Bird. As you can see the number one represents One bird. good let us see the next number. 
 The symbol displayed on the box is the second number. It's name is Two. this number represents two real objects. Two birds, two bananas... and so on.
 To see what is inside the box or to know what the number two represents say Two out loud.
 You are wrong. please try again. say Two out loud.
