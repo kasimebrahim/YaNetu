@@ -27,11 +27,11 @@ public class PluginScript : MonoBehaviour {
 		return txt;
 	}
 
-	void Update(){
-		if(!IsSpeaking()){
-			Speek ("I am speaking some thing");
-		}
-	}
+//	void Update(){
+//		if(!IsSpeaking()){
+//			Speek ("I am speaking some thing");
+//		}
+//	}
 
 	void Start(){
 	}
