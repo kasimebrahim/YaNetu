@@ -20,8 +20,11 @@ public class PathFollower : MonoBehaviour {
 		transform.LookAt(targetPoint);
 		if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f){
 			index++;
-			index %= pathParent.childCount;
-			targetPoint = pathParent.GetChild (index);
+			if (index < pathParent.childCount) {
+				targetPoint = pathParent.GetChild (index);	
+			}
+			//index %= pathParent.childCount;
+
 		}
 	}
 }
