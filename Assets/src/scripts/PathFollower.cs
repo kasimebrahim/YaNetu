@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PathFollower : MonoBehaviour {
 
-	public float speed = 1f;
+	public float speed = 3f;
 	public Transform pathParent;
 	Transform targetPoint;
 	int index;
@@ -21,7 +21,14 @@ public class PathFollower : MonoBehaviour {
 		if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f){
 			index++;
 			if (index < pathParent.childCount) {
-				targetPoint = pathParent.GetChild (index);	
+				if (index > 2000) {
+					speed = 0;
+				} else {
+					speed = 3f;
+					targetPoint = pathParent.GetChild (index);
+				}
+
+
 			}
 			//index %= pathParent.childCount;
 
