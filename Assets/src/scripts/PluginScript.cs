@@ -5,6 +5,17 @@ public class PluginScript : MonoBehaviour {
 	private string inText;
 	private string lastText;
 	private bool toast;
+	private bool isSpeaking = false;
+
+	public bool IsSpeaking(){
+		return isSpeaking;
+	}
+
+	public void SpeechCompleted(string txt){
+		if(txt != null){
+			isSpeaking = false;
+		}
+	}
 
 	public void setInText(string txt){
 		inText = txt;
@@ -15,6 +26,13 @@ public class PluginScript : MonoBehaviour {
 		inText = null;
 		return txt;
 	}
+
+	void Update(){
+		if(!IsSpeaking()){
+			Speek ("I am speaking some thing");
+		}
+	}
+
 	void Start(){
 	}
 
@@ -38,6 +56,7 @@ public class PluginScript : MonoBehaviour {
 
 	/*speek*/
 	public void Speek(string text){
+		isSpeaking = true;
 		using(AndroidJavaClass activityClass = new AndroidJavaClass("com.example.mylibrary.MainActivity")){
 			using(AndroidJavaObject activityObject = activityClass.GetStatic<AndroidJavaObject>("myContext")){
 				activityObject.Call ("speak", text);
