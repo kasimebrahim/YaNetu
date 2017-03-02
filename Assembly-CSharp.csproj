@@ -50,8 +50,7 @@
      <Compile Include="Assets\src\scripts\CameraFollower.cs" />
      <Compile Include="Assets\src\scripts\GameData.cs" />
      <Compile Include="Assets\src\scripts\MainGameController.cs" />
-     <Compile Include="Assets\src\scripts\MonkeyController.cs" />
-     <Compile Include="Assets\src\scripts\PathFollower.cs" />
+     <Compile Include="Assets\src\scripts\MonkeyScript.cs" />
      <Compile Include="Assets\src\scripts\PluginScript.cs" />
      <Compile Include="Assets\src\scripts\StateManager.cs" />
      <Compile Include="Assets\src\states\StateEnd.cs" />
