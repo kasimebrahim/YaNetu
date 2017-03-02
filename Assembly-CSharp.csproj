@@ -53,6 +53,7 @@
      <Compile Include="Assets\scripts\TimedObjectDestructor.cs" />
      <Compile Include="Assets\scripts\playerBehavior.cs" />
      <Compile Include="Assets\scripts\scriptButtonNextScene.cs" />
+     <Compile Include="Assets\scripts\using UnityEngin.cs" />
      <Compile Include="Assets\src\code\dialogue\DialogueSystem.cs" />
      <Compile Include="Assets\src\scripts\GameData.cs" />
      <Compile Include="Assets\src\scripts\PluginScript.cs" />
