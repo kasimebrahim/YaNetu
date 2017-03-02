@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\src\code\dialogue\DialogueSystem.cs" />
+     <Compile Include="Assets\src\scripts\ButtonScript.cs" />
      <Compile Include="Assets\src\scripts\CameraFollower.cs" />
      <Compile Include="Assets\src\scripts\GameData.cs" />
+     <Compile Include="Assets\src\scripts\MonkeyController.cs" />
      <Compile Include="Assets\src\scripts\PathFollower.cs" />
      <Compile Include="Assets\src\scripts\PluginScript.cs" />
      <Compile Include="Assets\src\scripts\StateManager.cs" />

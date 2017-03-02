@@ -15,7 +15,9 @@ namespace Assets.src.states
 			if(SceneManager.GetActiveScene().name != "scene1"){
 				SceneManager.LoadScene ("scene1", LoadSceneMode.Single);
 			}
+
 			Debug.Log ("Learn state");
+			SceneManager.LoadScene ("scene2", LoadSceneMode.Single);
 		}
 
 		public void StateUpdate(){
