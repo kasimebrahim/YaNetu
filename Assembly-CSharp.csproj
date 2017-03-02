@@ -52,6 +52,7 @@
      <Compile Include="Assets\src\scripts\MainGameController.cs" />
      <Compile Include="Assets\src\scripts\MonkeyScript.cs" />
      <Compile Include="Assets\src\scripts\PluginScript.cs" />
+     <Compile Include="Assets\src\scripts\SmoothCamera.cs" />
      <Compile Include="Assets\src\scripts\StateManager.cs" />
      <Compile Include="Assets\src\states\StateEnd.cs" />
      <Compile Include="Assets\src\states\StateGame.cs" />
