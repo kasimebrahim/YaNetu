@@ -7,6 +7,8 @@ public class BreakButton2 : MonoBehaviour {
 
 	public Button yourButton;
 	public GameObject Box;
+	public GameObject bird;
+	public GameObject bird2;
 	//public GameObject explosionPrefab;
 
 	// Use this for initialization
@@ -21,6 +23,8 @@ public class BreakButton2 : MonoBehaviour {
 	// Update is called once per frame
 	void TaskOnClick(){
 		Destroy(Box);
+		bird.SetActive(true);
+		bird2.SetActive(true);
 		//Instantiate (explosionPrefab);
 	}
 }
