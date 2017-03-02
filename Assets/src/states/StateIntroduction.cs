@@ -8,7 +8,7 @@ namespace Assets.src.states
 	public class StateIntroduction : IState
 	{
 		private StateManager stateManager;
-
+		public GameObject g;
 		public StateIntroduction (StateManager sm)
 		{
 			this.stateManager = sm;

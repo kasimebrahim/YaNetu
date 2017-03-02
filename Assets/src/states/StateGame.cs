@@ -8,7 +8,6 @@ namespace Assets.src.states
 	public class StateGame : IState
 	{
 		private StateManager stateManager;
-		public GameObject gameControl;
 		public StateGame (StateManager sm)
 		{
 			this.stateManager = sm;
@@ -24,7 +23,10 @@ namespace Assets.src.states
 		}
 
 		public void OnGUI(){
-			
+//			if (GUI.Button (new Rect (100, 100, 150, 130), "Button")) {
+//				Debug.Log ("This code is executed when the Button is clicked");
+//			}
+//			
 		}
 	}
 }
