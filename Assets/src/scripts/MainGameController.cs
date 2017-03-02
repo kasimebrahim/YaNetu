@@ -201,6 +201,7 @@ public class MainGameController : MonoBehaviour {
 		transform.position = Vector3.MoveTowards (transform.position, targetPoint.position, speed * Time.deltaTime);
 		//transform.position = Vector3.Lerp (transform.position, targetPoint.position,speed * Time.deltaTime);
 		//		transform.rotation = Quaternion.RotateTowards(transform.rotation, targetPoint.rotation, speed * Time.deltaTime);
+		Quaternion rot = targetPoint.rotation;
 		transform.LookAt(targetPoint);
 		//transform.rotation = Quaternion.Slerp (transform.rotation, targetPoint.rotation, Time.deltaTime);
 		if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f){
