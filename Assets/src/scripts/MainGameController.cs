@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Assets.src.states.interfaces;
+using Assets.src.states;
 public class MainGameController : MonoBehaviour {
+	float currentTime = 0;
 	public float speed = 2f;
 	public Transform pathParent;
 	Transform targetPoint;
@@ -23,6 +26,7 @@ public class MainGameController : MonoBehaviour {
 	bool isIncrement = false;
 	bool isIncrement2 = false;
 	bool isIncrement3 = false;
+
 	void Start () {
 		index = 0;
 		targetPoint = pathParent.GetChild (index);
@@ -180,8 +184,17 @@ public class MainGameController : MonoBehaviour {
 		} 
 
 	}
-	void checkGameOver(){
-		
+	public void ButtonHandler(Button btn){
+		if (btn.name.Equals ("startLearn")) {
+			GameObject controller = GameObject.FindGameObjectWithTag("gamecont");
+			StateManager stateManager = controller.GetComponent<StateManager> ();
+			IState learnState = new StateLearn (stateManager);
+			stateManager.Switch (learnState);
+			
+		} else if (btn.name.Equals ("Exit")) {
+			
+			Application.Quit ();
+		}
 	}
 
 	public void onButtonClicked(Button button){
@@ -220,9 +233,30 @@ public class MainGameController : MonoBehaviour {
 				Debug.Log ("shit");
 				sound.Stop ();
 				puzzle4Audio.Stop ();
+				Text t = statusText.GetComponent<Text>();
+				t.text = "Congradulation!";
+				t.color = Color.green;
+				statusText.SetActive (true);
+				Debug.Log ("start");
+				StartCoroutine (Delay());
+
+				GameObject controller = GameObject.FindGameObjectWithTag("gamecont");
+				StateManager stateManager = controller.GetComponent<StateManager> ();
+				IState endState = new StateEnd (stateManager);
+				stateManager.Switch (endState);
+
 			}
 			//index %= pathParent.childCount;
 
 		}
+	}
+	IEnumerator Delay(){
+		currentTime = 0;
+		while(currentTime < 15f){
+			currentTime += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
+			
 	}
 }
