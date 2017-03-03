@@ -16,8 +16,7 @@ namespace Assets.src.states
 				SceneManager.LoadScene ("scene1", LoadSceneMode.Single);
 			}
 
-			Debug.Log ("Learn state");
-			SceneManager.LoadScene ("scene2", LoadSceneMode.Single);
+
 		}
 
 		public void StateUpdate(){

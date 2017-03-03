@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Assets.src.states.interfaces;
+using Assets.src.states;
 public class MainGameController : MonoBehaviour {
 	public float speed = 2f;
 	public Transform pathParent;
@@ -180,8 +182,17 @@ public class MainGameController : MonoBehaviour {
 		} 
 
 	}
-	void checkGameOver(){
-		
+	public void ButtonHandler(Button btn){
+		if (btn.name.Equals ("startLearn")) {
+			GameObject controller = GameObject.FindGameObjectWithTag("gamecont");
+			StateManager stateManager = controller.GetComponent<StateManager> ();
+			IState learnState = new StateLearn (stateManager);
+			stateManager.Switch (learnState);
+			
+		} else if (btn.name.Equals ("Exit")) {
+			
+			Application.Quit ();
+		}
 	}
 
 	public void onButtonClicked(Button button){

@@ -24,7 +24,7 @@ namespace Assets.src.states
 
 		public void StateUpdate(){
 			//Debug.Log ("state");
-			stateManager.Switch(new StateGame(stateManager));
+			//stateManager.Switch(new StateGame(stateManager));
 		}
 
 		public void OnGUI(){
