@@ -238,17 +238,7 @@ public class MainGameController : MonoBehaviour {
 				t.color = Color.green;
 				statusText.SetActive (true);
 				Debug.Log ("start");
-				if (currentTime == 0) {
-					Debug.Log ("current = 0");
-					currentTime = Time.realtimeSinceStartup;
-					Time.timeScale = 0f;
-				}
-
-				if (currentTime >= Time.realtimeSinceStartup - 5000f) {
-					Debug.Log ("blah");
-					Time.timeScale = 1f;
-
-				}
+				StartCoroutine (Delay());
 
 				GameObject controller = GameObject.FindGameObjectWithTag("gamecont");
 				StateManager stateManager = controller.GetComponent<StateManager> ();
@@ -259,5 +249,14 @@ public class MainGameController : MonoBehaviour {
 			//index %= pathParent.childCount;
 
 		}
+	}
+	IEnumerator Delay(){
+		currentTime = 0;
+		while(currentTime < 15f){
+			currentTime += Time.unscaledDeltaTime;
+			yield return null;
+		}
+
+			
 	}
 }
