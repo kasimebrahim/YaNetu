@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Assets.src.states.interfaces;
 using Assets.src.states;
 public class MainGameController : MonoBehaviour {
+	float currentTime = 0;
 	public float speed = 2f;
 	public Transform pathParent;
 	Transform targetPoint;
@@ -25,6 +26,7 @@ public class MainGameController : MonoBehaviour {
 	bool isIncrement = false;
 	bool isIncrement2 = false;
 	bool isIncrement3 = false;
+
 	void Start () {
 		index = 0;
 		targetPoint = pathParent.GetChild (index);
@@ -231,6 +233,28 @@ public class MainGameController : MonoBehaviour {
 				Debug.Log ("shit");
 				sound.Stop ();
 				puzzle4Audio.Stop ();
+				Text t = statusText.GetComponent<Text>();
+				t.text = "Congradulation!";
+				t.color = Color.green;
+				statusText.SetActive (true);
+				Debug.Log ("start");
+				if (currentTime == 0) {
+					Debug.Log ("current = 0");
+					currentTime = Time.realtimeSinceStartup;
+					Time.timeScale = 0f;
+				}
+
+				if (currentTime >= Time.realtimeSinceStartup - 5000f) {
+					Debug.Log ("blah");
+					Time.timeScale = 1f;
+
+				}
+
+				GameObject controller = GameObject.FindGameObjectWithTag("gamecont");
+				StateManager stateManager = controller.GetComponent<StateManager> ();
+				IState endState = new StateEnd (stateManager);
+				stateManager.Switch (endState);
+
 			}
 			//index %= pathParent.childCount;
 
