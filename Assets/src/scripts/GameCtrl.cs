@@ -5,7 +5,6 @@ public class GameCtrl : MonoBehaviour {
 	public Transform train;
 	public Transform challanges;
 	Transform puzzle;
-	int noOfMonkeys = 0;
 	int puzzleIndex = 0;
 	void Start () {
 		puzzle = challanges.GetChild (puzzleIndex);
@@ -27,6 +26,5 @@ public class GameCtrl : MonoBehaviour {
 				puzzle = challanges.GetChild (puzzleIndex);
 			}
 		}
-
 }
 }
