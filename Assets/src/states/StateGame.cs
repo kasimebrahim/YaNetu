@@ -7,13 +7,17 @@ namespace Assets.src.states
 {
 	public class StateGame : IState
 	{
+		private GameObject gameController;
 		private StateManager stateManager;
+		private GameObject train;
 		public StateGame (StateManager sm)
 		{
 			this.stateManager = sm;
 			if(SceneManager.GetActiveScene().name != "scene2"){
 				SceneManager.LoadScene ("scene2", LoadSceneMode.Single);
 			}
+			gameController = GameObject.FindGameObjectWithTag("gamecont");
+			//gameController.AddComponent<GameCtrl> ();
 
 		}
 

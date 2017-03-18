@@ -11,7 +11,7 @@ public class scriptButtonNextScene : MonoBehaviour {
 	}
 
 	void TaskOnClick(){
-		Debug.Log ("You have clicked the button!");
+//		Debug.Log ("You have clicked the button!");
 		Application.LoadLevel ("scene1");
 	}
 }

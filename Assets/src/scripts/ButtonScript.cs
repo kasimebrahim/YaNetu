@@ -2,17 +2,19 @@
 using System.Collections;
 using UnityEngine.UI;
 public class ButtonScript : MonoBehaviour {
-	public GameObject monkey;
-	private Animator animator;
-	public GameObject tree;
-	private bool isJump = false;
-	public void onClicked(Button b){
-		animator = monkey.GetComponent<Animator> ();
-		if (b.name.Equals ("Button1")) {
-			animator.Play ("long_Jump");
-			isJump = true;
-		}
+	public static int Answer = 0;
+	public void onButtonClicked(Button button){
+		if (button.name.Equals ("Button1")) {
+			Answer = 1;
+		} else if (button.name.Equals ("Button2")) {
+			Answer = 2;
 
+		} else if (button.name.Equals ("Button3")) {
+			Answer = 3;
+		}
+		else if(button.name.Equals("Button4")){
+			Answer = 4;
+		}
 	}
 	void Update(){
 		//if(isJump)

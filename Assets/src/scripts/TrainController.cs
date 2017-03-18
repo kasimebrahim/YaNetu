@@ -8,7 +8,7 @@ using Assets.src.states;
 public class TrainController : MonoBehaviour {
 	int index;
 	public Transform pathParent;
-	public float Speed = 3f;
+	public static float Speed = 3f;
 	Transform targetPoint;
 	void Start () {
 		index = 0;
