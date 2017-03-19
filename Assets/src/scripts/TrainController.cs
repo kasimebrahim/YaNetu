@@ -19,12 +19,13 @@ public class TrainController : MonoBehaviour {
 	}
 	void FixedUpdate(){
 		transform.position = Vector3.MoveTowards (transform.position, targetPoint.position, Speed * Time.deltaTime);
-		Quaternion rot = targetPoint.rotation;
-		transform.LookAt(targetPoint);
+		var rotation = Quaternion.LookRotation (targetPoint.position - transform.position);
+		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Speed * Time.deltaTime);
+		//transform.LookAt(targetPoint);
 		if (Vector3.Distance(transform.position, targetPoint.position) < 0.1f){
 			index++;
 			if (index < pathParent.childCount) {
-				if (index > 2000) {
+				if (index > 1000) {
 					Speed = 0;
 				} else {
 					Speed = 3f;
