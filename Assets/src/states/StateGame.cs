@@ -23,10 +23,10 @@ namespace Assets.src.states
 		}
 
 		public void OnGUI(){
-//			if (GUI.Button (new Rect (100, 100, 150, 130), "Button")) {
+//			if (GUI.Button (new Rect (300, 300, 350, 330), "Button")) {
 //				Debug.Log ("This code is executed when the Button is clicked");
 //			}
-//			
+			
 		}
 	}
 }

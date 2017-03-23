@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using Assets.src.states;
+using Assets.src.states.interfaces;
 public class scriptButtonNextScene : MonoBehaviour {
 	public Button yourButton;
 
@@ -11,7 +12,9 @@ public class scriptButtonNextScene : MonoBehaviour {
 	}
 
 	void TaskOnClick(){
-		Debug.Log ("You have clicked the button!");
-		Application.LoadLevel ("scene1");
+		GameObject controller = GameObject.FindGameObjectWithTag("gamecont");
+		StateManager stateManager = controller.GetComponent<StateManager> ();
+		IState learnState = new StateLearn (stateManager);
+		stateManager.Switch (learnState);
 	}
 }
