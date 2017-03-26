@@ -5,6 +5,8 @@ public class YanetuController : MonoBehaviour {
 	private static Animator yanetuAnimator;
 	private static AudioSource audioSource;
 	static ArrayList AudioClips = new ArrayList();
+	static bool isPlayStarted = false;
+	public static bool IS_finished = false;
 	void Start () {
 		yanetuAnimator = GetComponent<Animator> ();
 		audioSource = gameObject.AddComponent<AudioSource> ();
@@ -19,6 +21,7 @@ public class YanetuController : MonoBehaviour {
 				AudioClips.RemoveAt (0);
 			}
 		}
+		IS_finished = !audioSource.isPlaying;
 	}
 	public static void Animate(string animationName){
 		yanetuAnimator.Play (animationName);
@@ -29,6 +32,15 @@ public class YanetuController : MonoBehaviour {
 	}
 	private void play(AudioClip clip)
 	{
+		isPlayStarted = true;
 		audioSource.PlayOneShot (clip);
+
+	}
+	public static bool isFinished(){
+		if (AudioClips.Count == 0) {
+			if(isPlayStarted)
+			return audioSource.isPlaying;
+		}
+		return false;
 	}
 }
