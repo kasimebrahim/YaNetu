@@ -18,6 +18,12 @@ public class TeachingManager : MonoBehaviour {
 		NumberController.setNumberIndex (number);
 
 	}
+	public static void teachArtimetic(int num1, int num2, string op){
+		NumberController.teachArtimetic (num1, num2, op);
+	}
+	public static void answer(){
+		NumberController.setAnswer ();
+	}
 	public static void readyForNext(){
 		isWait = true;
 

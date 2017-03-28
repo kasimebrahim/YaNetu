@@ -10,7 +10,9 @@ namespace Assets.src.states
 		enum States {LEARN, STOP, START, DETAIL};
 		States currentState = States.START;
 		int number = 1;
-
+		int num1 = 0;
+		int num2 = 0;
+		string operation = "+";
 		public StateLearn (StateManager sm)
 		{
 			this.stateManager = sm;
@@ -21,6 +23,37 @@ namespace Assets.src.states
 
 
 		public void StateUpdate(){
+			artimetic ();
+		}
+		public void artimetic(){
+			if (currentState == States.LEARN) {
+				YanetuController.Animate ("EvaAnimation2");
+				TeachingManager.teachArtimetic(4, 2,"/");
+				YanetuController.Speak ("Sound/1");
+				currentState = States.DETAIL;
+			} else if (currentState == States.DETAIL) {
+				if (YanetuController.IS_finished) {
+					TeachingManager.answer ();
+					YanetuController.Speak ("Sound/1");
+					currentState = States.STOP;
+				}
+
+			} else if (currentState == States.STOP) {
+				if (YanetuController.IS_finished) {
+//					if (number < 4) {
+//						number++;
+//					} else {
+//						number = 10; 
+//					}
+					TeachingManager.readyForNext ();
+					currentState = States.START;
+
+				}
+			}
+
+
+		}
+		public void counting(){
 			if (currentState == States.LEARN) {
 				YanetuController.Animate ("EvaAnimation2");
 				TeachingManager.teachCounting (number);
@@ -29,17 +62,20 @@ namespace Assets.src.states
 			} else if (currentState == States.DETAIL) {
 				if (YanetuController.IS_finished) {
 					TeachingManager.detailTeaching ();
-					YanetuController.Speak ("Sound/3");
+					YanetuController.Speak ("Sound/1");
 					currentState = States.STOP;
 				}
-			
+
 			} else if (currentState == States.STOP) {
 				if (YanetuController.IS_finished) {
 					if (number < 4) {
 						number++;
+					} else {
+						number = 10; 
 					}
 					TeachingManager.readyForNext ();
 					currentState = States.LEARN;
+
 				}
 			}
 
