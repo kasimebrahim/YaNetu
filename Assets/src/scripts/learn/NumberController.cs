@@ -69,11 +69,12 @@ public class NumberController : MonoBehaviour {
 			}
 		}
 		if (isAnswerSet) {
-			answerNum = Numbers.transform.GetChild (answer).gameObject;
-			answerNum.transform.position = ansPos;
-			if (eduType == EducationType.ADDITION) {
-				ansDetail ();
+			answerNum = Numbers.transform.GetChild (3).gameObject;
+			if (answer == num1 || answer == num2) {
+				answerNum = Instantiate (answerNum);
 			}
+			answerNum.transform.position = ansPos;
+				ansDetail ();
 			isAnswerSet = false;
 		}
 
@@ -174,6 +175,9 @@ public class NumberController : MonoBehaviour {
 		answerNum.SetActive (false);
 		operationBlock.SetActive (false);
 		equalBlock.SetActive (false);
+		for (int i = 0; i < balls.Count; i++) {
+			Destroy ((GameObject)balls[i]);
+		}
 	}
 	public static void addBalls(){
 		balls = new ArrayList ();
@@ -279,7 +283,7 @@ public class NumberController : MonoBehaviour {
 			answer = num1 * num2;
 		}
 		if (eduType == EducationType.DIVISION) {
-			operationBlock = operations.transform.GetChild (3).gameObject;
+			operationBlock = operations.transform.GetChild (answer).gameObject;
 			answer = num1 / num2;
 		}
 		operationBlock.transform.position = opPos;
@@ -291,21 +295,39 @@ public class NumberController : MonoBehaviour {
 
 	}
 	void addArtiBalls(){
-		gap = 0f;
 		balls = new ArrayList ();
-		for (int i = 0; i < (num1 + num2); i++) {
-			if ((Mathf.Min (num1, num2)) == i) {
-				Debug.Log (Mathf.Min (num1, num2));
-				gap += 5.5f;
+		gap = 0f;
+		if (eduType == EducationType.MULTIPLICATION) {
+			gap = 0f;
+			float gapFront = 1f;
+			for (int i = 0; i < (Mathf.Min (num1, num2)); i++) {
+				for (int j = 0; j < (Mathf.Max (num1, num2)); j++) {
+					ball = Instantiate (ballPrefab);
+					balls.Add (ball);
+					ball.transform.Translate (Vector3.right * gap);
+					ball.transform.Translate (Vector3.back * gapFront);
+					gap++;
+				}
+				gap = 0f;
+				gapFront += 1.5f;
 			}
-			ball = Instantiate (ballPrefab);
-			balls.Add (ball);
-			ball.transform.Translate (Vector3.left * 3);
-			ball.transform.Translate (Vector3.right * gap);
-			//ball.transform.Translate (Vector3.up * 1);
-			ball.transform.Translate (Vector3.back * 2);
-			gap += 1;
 		}
+		if (eduType == EducationType.ADDITION || eduType == EducationType.SUBTRACTION) {
+			for (int i = 0; i < (num1 + num2); i++) {
+				if (num1== i) {
+
+					gap += 5.5f;
+				}
+				ball = Instantiate (ballPrefab);
+				balls.Add (ball);
+				ball.transform.Translate (Vector3.left * 3);
+				ball.transform.Translate (Vector3.right * gap);
+				//ball.transform.Translate (Vector3.up * 1);
+				ball.transform.Translate (Vector3.back * 2);
+				gap += 1;
+			}
+		}
+
 		//gap = 0f;
 	}
 }

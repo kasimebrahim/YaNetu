@@ -28,7 +28,7 @@ namespace Assets.src.states
 		public void artimetic(){
 			if (currentState == States.LEARN) {
 				YanetuController.Animate ("EvaAnimation2");
-				TeachingManager.teachArtimetic(1, 2,"+");
+				TeachingManager.teachArtimetic(4, 3,"*");
 				YanetuController.Speak ("Sound/1");
 				currentState = States.DETAIL;
 			} else if (currentState == States.DETAIL) {
