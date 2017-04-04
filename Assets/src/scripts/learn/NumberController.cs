@@ -4,6 +4,8 @@ using System.Collections;
 public class NumberController : MonoBehaviour {
 	public GameObject Numbers;
 	public GameObject operations;
+	public GameObject monkey;
+	public GameObject banana;
 	public enum States {Stop,Down,Hide};
 	public static States NumberState = States.Stop;
 	public float speed = 5f;
@@ -37,6 +39,9 @@ public class NumberController : MonoBehaviour {
 	static Vector3 ansPos = new Vector3 (7.3f, 3.555f, 10.05f);
 	static Vector3 opPos = new Vector3(0.3f, 4.555f, 9.05f);
 	static Vector3 equlPos = new Vector3 (5.3f, 4.555f, 9.05f);
+	static Vector3 bananaPos = new Vector3(-4.05f, 4.35f,4.71f);
+	static Vector3 monkeyPos = new Vector3(3.42f, 2.84f,7.78f);
+	static ArrayList monkeys = new ArrayList();
 	static GameObject firstNum;
 	static GameObject secondNum;
 	static GameObject answerNum;
@@ -47,6 +52,7 @@ public class NumberController : MonoBehaviour {
 	static int num2 = 0;
 	static int answer;
 	static bool isAnswerSet = false;
+	static ArrayList bananas = new ArrayList();
 	void Start () {
 		
 	}
@@ -80,20 +86,51 @@ public class NumberController : MonoBehaviour {
 
 	}
 	public void ansDetail(){
-		for (int i = 0; i < balls.Count; i++) {
-			GameObject b = balls [i] as GameObject;
-			Destroy (b);
+		gap = 0f;
+		float back = 1.5f;
+		if (eduType == EducationType.DIVISION) {
+			for (int i = 0; i < num1; i++) {
+				GameObject ban = (GameObject)bananas [i];
+				ban.transform.position = monkeyPos;
+				ban.transform.Translate (Vector3.down * back);
+				ban.transform.Translate (Vector3.back * gap);
+				ban.transform.Translate (Vector3.left * 0.5f);
+				if (i % num2-1 == 0) {
+					if (i != 0) {
+						gap = -2f;
+						back += 1;
+					}
+
+				}
+				gap+=2f;
+			}
+			gap = 4.5f;
+			for (int i = 0; i < answer; i++) {
+				GameObject ban = Instantiate (banana);
+				ban.transform.Translate (Vector3.back * 4);
+				ban.transform.Translate (Vector3.up * gap);
+				bananas.Add (ball);
+				gap++;
+			}
+
+		
+		} else {
+			for (int i = 0; i < balls.Count; i++) {
+				GameObject b = balls [i] as GameObject;
+				Destroy (b);
+			}
+			balls = new ArrayList ();
+			gap = 7f;
+			for (int i = 0; i < answer; i++) {
+				Debug.Log (i);
+				ball = Instantiate (ballPrefab);
+				ball.transform.Translate (Vector3.back * 2);
+				ball.transform.Translate (Vector3.right * gap);
+				balls.Add (ball);
+				gap++;
+			}
 		}
-		balls = new ArrayList ();
-		gap = 7f;
-		for (int i = 0; i < answer; i++) {
-			Debug.Log (i);
-			ball = Instantiate (ballPrefab);
-			ball.transform.Translate (Vector3.back * 2);
-			ball.transform.Translate (Vector3.right * gap);
-			balls.Add (ball);
-			gap++;
-		}
+
 	}
 	public void detailTeach(){
 		if (isDetailed) {
@@ -177,6 +214,12 @@ public class NumberController : MonoBehaviour {
 		equalBlock.SetActive (false);
 		for (int i = 0; i < balls.Count; i++) {
 			Destroy ((GameObject)balls[i]);
+		}
+		for (int i = 0; i < bananas.Count; i++) {
+			Destroy ((GameObject)bananas[i]);
+		}
+		for (int i = 0; i < monkeys.Count; i++) {
+			Destroy ((GameObject)monkeys [i]);
 		}
 	}
 	public static void addBalls(){
@@ -283,7 +326,7 @@ public class NumberController : MonoBehaviour {
 			answer = num1 * num2;
 		}
 		if (eduType == EducationType.DIVISION) {
-			operationBlock = operations.transform.GetChild (answer).gameObject;
+			operationBlock = operations.transform.GetChild (3).gameObject;
 			answer = num1 / num2;
 		}
 		operationBlock.transform.position = opPos;
@@ -326,6 +369,34 @@ public class NumberController : MonoBehaviour {
 				ball.transform.Translate (Vector3.back * 2);
 				gap += 1;
 			}
+		}
+		if (eduType == EducationType.DIVISION) {
+			bananas = new ArrayList ();
+			gap = 0f;
+			float gapRight = 0f;
+			for (int i = 0; i < num1; i++) {
+				GameObject ban = Instantiate (banana);
+				ban.transform.position = bananaPos;
+				ban.transform.Translate (Vector3.back *  gap);
+				ban.transform.Translate (Vector3.up * gapRight);
+				bananas.Add (ban);
+				gap++;
+				if (i % 3 == 0) {
+					if (i != 0) {
+						gapRight += 2;
+						gap = 0f;
+					}
+				}
+			}
+			gap = 0f;
+			monkeys = new ArrayList ();
+			for (int i = 0; i < num2; i++) {
+				GameObject mon = Instantiate (monkey);
+				mon.transform.position = monkeyPos;
+				mon.transform.Translate (Vector3.right * gap);
+				gap+=2.5f;
+			}
+
 		}
 
 		//gap = 0f;
