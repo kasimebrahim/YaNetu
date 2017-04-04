@@ -14,7 +14,7 @@ public class NumberController : MonoBehaviour {
 	static ArrayList balls = new ArrayList();
 	public float motionMagnitude = 0.003f;
 	static bool isDetailed = false;
-	float gap = 0f;
+	static float gap = 0f;
 	GameObject ball;
 	enum BallSteates{UP, Down, IDLE};
 	static BallSteates ballState = BallSteates.IDLE;
@@ -32,13 +32,16 @@ public class NumberController : MonoBehaviour {
 	GameObject numberGameObject2;
 	enum EducationType{ COUNTING, ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION};
 	static EducationType eduType = EducationType.COUNTING;
-	static Vector3 firstNumPos = new Vector3(-0.8f,3.555f,10.05f);
-	static Vector3 secondNumPos = new Vector3 (1.69f, 3.555f, 10.05f);
-	static Vector3 ansPos = new Vector3 (5.83f, 3.555f, 10.05f);
+	static Vector3 firstNumPos = new Vector3(-3.8f,3.555f,10.05f);
+	static Vector3 secondNumPos = new Vector3 (2.8f, 3.555f, 10.05f);
+	static Vector3 ansPos = new Vector3 (7.3f, 3.555f, 10.05f);
+	static Vector3 opPos = new Vector3(0.3f, 4.555f, 9.05f);
+	static Vector3 equlPos = new Vector3 (5.3f, 4.555f, 9.05f);
 	static GameObject firstNum;
 	static GameObject secondNum;
 	static GameObject answerNum;
 	static GameObject operationBlock;
+	static GameObject equalBlock;
 	static bool isArtimetic = true;
 	static int num1 = 0;
 	static int num2 = 0;
@@ -53,23 +56,43 @@ public class NumberController : MonoBehaviour {
 		if (eduType == EducationType.COUNTING) {
 			if (isTwoDigit) {
 				twoDigit ();
-			}
-			else 
+			} else
 				oneDigit ();
 			detailTeach ();	
 		}
 		else {
 			if (isArtimetic) {
 				setPositionOfNumbers ();
+				addArtiBalls ();
+
 				isArtimetic = false;
 			}
 		}
 		if (isAnswerSet) {
 			answerNum = Numbers.transform.GetChild (answer).gameObject;
 			answerNum.transform.position = ansPos;
+			if (eduType == EducationType.ADDITION) {
+				ansDetail ();
+			}
 			isAnswerSet = false;
 		}
 
+	}
+	public void ansDetail(){
+		for (int i = 0; i < balls.Count; i++) {
+			GameObject b = balls [i] as GameObject;
+			Destroy (b);
+		}
+		balls = new ArrayList ();
+		gap = 7f;
+		for (int i = 0; i < answer; i++) {
+			Debug.Log (i);
+			ball = Instantiate (ballPrefab);
+			ball.transform.Translate (Vector3.back * 2);
+			ball.transform.Translate (Vector3.right * gap);
+			balls.Add (ball);
+			gap++;
+		}
 	}
 	public void detailTeach(){
 		if (isDetailed) {
@@ -150,6 +173,7 @@ public class NumberController : MonoBehaviour {
 		secondNum.SetActive (false);
 		answerNum.SetActive (false);
 		operationBlock.SetActive (false);
+		equalBlock.SetActive (false);
 	}
 	public static void addBalls(){
 		balls = new ArrayList ();
@@ -237,6 +261,10 @@ public class NumberController : MonoBehaviour {
 		firstNum.transform.position = firstNumPos;
 		secondNum = Numbers.transform.GetChild (num2).gameObject;
 		secondNum.transform.position = secondNumPos;
+		//equlPos
+		equalBlock = operations.transform.GetChild (4).gameObject;
+		equalBlock.transform.position = equlPos;
+		equalBlock.SetActive (true);
 		secondNum.SetActive (true);
 		if (eduType == EducationType.ADDITION) {
 			operationBlock = operations.transform.GetChild (0).gameObject;
@@ -254,11 +282,30 @@ public class NumberController : MonoBehaviour {
 			operationBlock = operations.transform.GetChild (3).gameObject;
 			answer = num1 / num2;
 		}
+		operationBlock.transform.position = opPos;
 		operationBlock.SetActive (true);
 
 	}
 	public static void setAnswer(){
 		isAnswerSet = true;
 
+	}
+	void addArtiBalls(){
+		gap = 0f;
+		balls = new ArrayList ();
+		for (int i = 0; i < (num1 + num2); i++) {
+			if ((Mathf.Min (num1, num2)) == i) {
+				Debug.Log (Mathf.Min (num1, num2));
+				gap += 5.5f;
+			}
+			ball = Instantiate (ballPrefab);
+			balls.Add (ball);
+			ball.transform.Translate (Vector3.left * 3);
+			ball.transform.Translate (Vector3.right * gap);
+			//ball.transform.Translate (Vector3.up * 1);
+			ball.transform.Translate (Vector3.back * 2);
+			gap += 1;
+		}
+		//gap = 0f;
 	}
 }
